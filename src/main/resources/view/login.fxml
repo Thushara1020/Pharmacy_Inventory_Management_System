@@ -37,16 +37,16 @@
             <!-- Remember + Forgot -->
             <HBox alignment="CENTER_LEFT" spacing="50">
                 <CheckBox fx:id="chkRemember" text="Remember me" />
-                <Hyperlink fx:id="btnforgot" text="Forgot your password?" />
+                <Hyperlink fx:id="btnforgot" onAction="#btnForgotpasswordActiton" text="Forgot your password?" />
             </HBox>
 
             <!-- Login Button -->
-            <Button fx:id="btnLogin" maxWidth="200" style="-fx-background-color:#22c55e; -fx-text-fill:white; -fx-font-size:14px; -fx-background-radius:8; -fx-padding:10 20;" text="Log in" />
+            <Button fx:id="btnLogin" maxWidth="200" onAction="#btnLoginAction" style="-fx-background-color:#22c55e; -fx-text-fill:white; -fx-font-size:14px; -fx-background-radius:8; -fx-padding:10 20;" text="Log in" />
 
             <!-- Sign up -->
             <HBox alignment="CENTER">
                 <Label text="Don't have an account?" />
-                <Hyperlink fx:id="btnsignup" text="Sign up" />
+                <Hyperlink fx:id="btnsignup" onAction="#btnSingUpAction" text="Sign up" />
             </HBox>
 
         </VBox>
