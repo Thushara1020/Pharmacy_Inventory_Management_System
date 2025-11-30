@@ -10,9 +10,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="743.0" prefWidth="1230.0" style="-fx-background-color: #f8f9fc;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardFormController">
+<AnchorPane prefHeight="743.0" prefWidth="1005.0" style="-fx-background-color: #f8f9fc;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardFormController">
 
     <!-- Top Green Header -->
     <VBox style="-fx-background-color: #28a745; -fx-background-radius: 0 0 25 25;" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" />
@@ -21,7 +20,7 @@
     <Label layoutX="23.0" layoutY="161.0" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Dashboard" />
 
         <!-- Card 3 – Total Sales Today -->
-     <VBox alignment="CENTER" layoutX="329.0" layoutY="451.0" prefHeight="234.0" prefWidth="276.0" style="-fx-background-color: white; -fx-background-radius: 20;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);                      -fx-padding: 35;">
+     <VBox alignment="CENTER" layoutX="220.0" layoutY="462.0" prefHeight="234.0" prefWidth="276.0" style="-fx-background-color: white; -fx-background-radius: 20;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);                      -fx-padding: 35;">
          <ImageView fitHeight="90" fitWidth="90">
              <image>
             <Image url="@../img/12692350.png" />
@@ -32,7 +31,7 @@
      </VBox>
 
         <!-- Card 4 – Expiring Soon (Red Number) -->
-     <VBox alignment="CENTER" layoutX="636.0" layoutY="451.0" prefHeight="177.0" prefWidth="266.0" style="-fx-background-color: white; -fx-background-radius: 20;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);                      -fx-padding: 35;">
+     <VBox alignment="CENTER" layoutX="527.0" layoutY="462.0" prefHeight="177.0" prefWidth="266.0" style="-fx-background-color: white; -fx-background-radius: 20;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);                      -fx-padding: 35;">
          <ImageView fitHeight="90" fitWidth="90">
              <image>
             <Image url="@../img/10755029.png" />
@@ -43,7 +42,7 @@
      </VBox>
 
         <!-- Card 1 – Total Medicines -->
-     <VBox alignment="CENTER" layoutX="329.0" layoutY="200.0" prefHeight="234.0" prefWidth="276.0" style="-fx-background-color: white; -fx-background-radius: 20;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);                      -fx-padding: 35;">
+     <VBox alignment="CENTER" layoutX="220.0" layoutY="211.0" prefHeight="234.0" prefWidth="276.0" style="-fx-background-color: white; -fx-background-radius: 20;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);                      -fx-padding: 35;">
          <ImageView fitHeight="90" fitWidth="90">
              <image>
             <Image url="@../img/5523306.png" />
@@ -54,7 +53,7 @@
      </VBox>
 
                     <!-- Card 2 – Total Suppliers -->
-     <VBox alignment="CENTER" layoutX="636.0" layoutY="200.0" prefHeight="234.0" prefWidth="266.0" style="-fx-background-color: white; -fx-background-radius: 20;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);                      -fx-padding: 35;">
+     <VBox alignment="CENTER" layoutX="527.0" layoutY="211.0" prefHeight="234.0" prefWidth="266.0" style="-fx-background-color: white; -fx-background-radius: 20;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 8);                      -fx-padding: 35;">
          <ImageView fitHeight="90" fitWidth="90">
              <image>
             <Image url="@../img/4866608.png" />
@@ -63,7 +62,7 @@
          <Label fx:id="TotalSuppliers" style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="28" />
          <Label style="-fx-font-size: 17px; -fx-text-fill: #7f8c8d;" text="Total Suppliers" />
      </VBox>
-   <HBox alignment="CENTER_LEFT" layoutX="7.0" prefHeight="140.0" prefWidth="1233.0" spacing="20">
+   <HBox alignment="CENTER_LEFT" layoutX="7.0" prefHeight="140.0" prefWidth="1006.0" spacing="20">
       <padding>
          <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
       </padding>
@@ -77,16 +76,11 @@
                </ImageView>
             </children>
          </VBox>
-         <Button onAction="#btnDashBoardAction" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Dashboard">
-            <font>
-               <Font name="System Italic" size="1.0" />
-            </font>
-         </Button>
          <Button onAction="#btnMedicinesAction" prefHeight="43.0" prefWidth="154.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Medicines Sales" />
          <Button onAction="#btnSuppliersAction" prefHeight="48.0" prefWidth="110.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Suppliers" />
          <Button onAction="#btnSalesAction" prefHeight="43.0" prefWidth="87.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Sales" />
          <Button onAction="#btnBillingAction" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Billing" />
-         <Label style="-fx-text-fill: #ff6b6b; -fx-font-size: 19px; -fx-font-weight: bold;" text="Hello, Thushara!" />
+         <Label style="-fx-text-fill: #ff6b6b; -fx-font-size: 19px; -fx-font-weight: bold;" text="Hello, " />
          <Button onAction="#btnLogoutAction" prefHeight="43.0" prefWidth="98.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Log out" />
          <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
             <image>

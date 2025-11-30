@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="877.0" prefWidth="1232.0" style="-fx-background-color: #f8f9fc;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.sales.SalesFormController">
+<AnchorPane prefHeight="877.0" prefWidth="1135.0" style="-fx-background-color: #f8f9fc;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.sales.SalesFormController">
 
     <!-- GREEN HEADER -->
     <VBox style="-fx-background-color: #28a745; -fx-background-radius: 0 0 30 30;" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" />
@@ -27,7 +27,7 @@
 
     <!-- SALES TABLE + BUTTONS -->
     <VBox layoutX="60" layoutY="380" spacing="20">
-        <TableView fx:id="salesTable" prefHeight="402.0" prefWidth="1080" style="-fx-background-color: white; -fx-background-radius: 20;                           -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,10);">
+        <TableView fx:id="salesTable" prefHeight="402.0" prefWidth="1013.0" style="-fx-background-color: white; -fx-background-radius: 20;                           -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,10);">
             <columns>
                 <TableColumn fx:id="colInvoiceId" prefWidth="120" style="-fx-alignment: CENTER;" text="Invoice Id" />
                 <TableColumn fx:id="colCustomer" prefWidth="220" text="Customer" />
@@ -90,7 +90,7 @@
          <Label style="-fx-font-size: 17px; -fx-text-fill: #555;" text="Today's Total Sales" />
          <Label fx:id="txtTotalTodaySales" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #28a745;" text="68,500.00" />
      </VBox>
-   <HBox alignment="CENTER_LEFT" layoutX="-1.0" prefHeight="140.0" prefWidth="1233.0" spacing="20">
+   <HBox alignment="CENTER_LEFT" layoutX="-1.0" prefHeight="140.0" prefWidth="1130.0" spacing="20">
       <padding>
          <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
       </padding>
@@ -111,7 +111,6 @@
          </Button>
          <Button onAction="#btnMedicinesAction" prefHeight="43.0" prefWidth="154.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Medicines Sales" />
          <Button onAction="#btnSuppliersAction" prefHeight="48.0" prefWidth="110.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Suppliers" />
-         <Button onAction="#btnSalesAction" prefHeight="43.0" prefWidth="87.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Sales" />
          <Button onAction="#btnBillingAction" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Billing" />
          <Label style="-fx-text-fill: #ff6b6b; -fx-font-size: 19px; -fx-font-weight: bold;" text="Hello, Thushara!" />
          <Button onAction="#btnLogoutAction" prefHeight="43.0" prefWidth="98.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Log out" />
