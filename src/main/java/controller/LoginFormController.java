@@ -43,7 +43,7 @@ public class LoginFormController {
             // Proceed to dashboard
             try {
             Stage stage = (Stage)((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/login.fxml")));
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard.fxml")));
             stage.setScene(scene);
             stage.centerOnScreen();
             } catch (IOException e) {
