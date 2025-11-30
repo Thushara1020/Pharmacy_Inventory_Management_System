@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginFormController {
+    Stage stage = new Stage();
 
     @FXML
     private Button btnLogin;
@@ -70,6 +71,16 @@ public class LoginFormController {
 
     @FXML
     void btnSingUpAction(ActionEvent event) {
+
+    }
+    @FXML
+    void btnGuestLoginAction(ActionEvent event) {
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

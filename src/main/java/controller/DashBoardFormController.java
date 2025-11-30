@@ -32,6 +32,7 @@ public class DashBoardFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        stage.show();
 
     }
 
@@ -49,10 +50,10 @@ public class DashBoardFormController {
     void btnLogoutAction(ActionEvent event) {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/login.fxml"))));
-            stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        stage.show();
 
     }
 
@@ -63,6 +64,7 @@ public class DashBoardFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        stage.show();
     }
 
     @FXML
@@ -72,6 +74,7 @@ public class DashBoardFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        stage.show();
     }
 
     @FXML
@@ -81,6 +84,7 @@ public class DashBoardFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        stage.show();
     }
 
 }

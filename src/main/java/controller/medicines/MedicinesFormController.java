@@ -95,6 +95,7 @@ public class MedicinesFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        stage.show();
 
     }
 
@@ -105,6 +106,7 @@ public class MedicinesFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        stage.show();
 
     }
 
@@ -120,6 +122,7 @@ public class MedicinesFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        stage.show();
 
 
     }

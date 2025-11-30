@@ -24,7 +24,7 @@
     <VBox style="-fx-background-color: #28a745; -fx-background-radius: 0 0 30 30;" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" />
 
     <!-- ==================== PAGE TITLE ==================== -->
-    <Label layoutX="60" layoutY="140" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Suppliers" />
+    <Label layoutX="59.0" layoutY="146.0" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Suppliers" />
 
     <!-- ==================== MAIN CONTENT ==================== -->
     <VBox layoutX="60" layoutY="200" prefWidth="1080" spacing="25">
@@ -80,15 +80,15 @@
                 <Button fx:id="btnUpdate" onAction="#btnUpdateAction" style="-fx-background-color: white; -fx-text-fill: #28a745; -fx-font-weight: bold;                                -fx-font-size: 16px; -fx-padding: 14 40; -fx-background-radius: 15;" text=" Update">
                     <graphic>
                         <ImageView fitHeight="24" fitWidth="24">
-                            <image><Image url="@../img/edit_icon.png" /></image>
+                            <image><Image url="@../img/kisspng-computer-icons-upgrade-download-clip-art-update-button-5ac5a25c9cfc34.150111981522901596643.jpg" /></image>
                         </ImageView>
                     </graphic>
                 </Button>
 
                 <Button fx:id="btnDelete" onAction="#btnDeleteAction" style="-fx-background-color: white; -fx-text-fill: #dc3545; -fx-font-weight: bold;                                -fx-font-size: 16px; -fx-padding: 14 40; -fx-background-radius: 15;" text=" Delete">
                     <graphic>
-                        <ImageView fitHeight="24" fitWidth="24">
-                            <image><Image url="@../img/delete_icon.png" /></image>
+                        <ImageView fitHeight="24" fitWidth="31.0">
+                            <image><Image url="@../img/images%20(1).png" /></image>
                         </ImageView>
                     </graphic>
                 </Button>

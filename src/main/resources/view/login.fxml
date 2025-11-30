@@ -12,10 +12,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="611.0" prefWidth="809.0" style="-fx-background-color:#e5e7eb;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+<AnchorPane prefHeight="669.0" prefWidth="766.0" style="-fx-background-color:#e5e7eb;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
 
     <children>
-        <VBox alignment="TOP_CENTER" layoutX="224.0" layoutY="37.0" prefHeight="491.0" prefWidth="361.0" spacing="20" style="-fx-background-color:white; -fx-background-radius:15; -fx-padding:30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);">
+        <VBox alignment="TOP_CENTER" layoutX="224.0" layoutY="37.0" prefHeight="562.0" prefWidth="361.0" spacing="20" style="-fx-background-color:white; -fx-background-radius:15; -fx-padding:30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);">
 
             <!-- Logo -->
             <ImageView fitHeight="146.0" fitWidth="152.0">
@@ -42,6 +42,7 @@
 
             <!-- Login Button -->
             <Button fx:id="btnLogin" maxWidth="200" onAction="#btnLoginAction" style="-fx-background-color:#22c55e; -fx-text-fill:white; -fx-font-size:14px; -fx-background-radius:8; -fx-padding:10 20;" text="Log in" />
+         <Button fx:id="btnLogin1" layoutX="91.0" layoutY="436.0" maxWidth="200" onAction="#btnGuestLoginAction" style="-fx-background-color:#22c55e; -fx-text-fill:white; -fx-font-size:14px; -fx-background-radius:8; -fx-padding:10 20;" text="Guest Loging" />
 
             <!-- Sign up -->
             <HBox alignment="CENTER">
