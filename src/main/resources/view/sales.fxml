@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="877.0" prefWidth="1232.0" style="-fx-background-color: #f8f9fc;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.sales.SalesFormController">
+
+    <!-- GREEN HEADER -->
+    <VBox style="-fx-background-color: #28a745; -fx-background-radius: 0 0 30 30;" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" />
+
+    <!-- TITLE -->
+    <Label layoutX="49.0" layoutY="140.0" prefHeight="42.0" prefWidth="86.0" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Sales" />
+
+    <!-- THREE SUMMARY CARDS -->
+    <HBox layoutX="60" layoutY="200" spacing="40" />
+
+    <!-- SALES TABLE + BUTTONS -->
+    <VBox layoutX="60" layoutY="380" spacing="20">
+        <TableView fx:id="salesTable" prefHeight="402.0" prefWidth="1080" style="-fx-background-color: white; -fx-background-radius: 20;                           -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,10);">
+            <columns>
+                <TableColumn fx:id="colInvoiceId" prefWidth="120" style="-fx-alignment: CENTER;" text="Invoice Id" />
+                <TableColumn fx:id="colCustomer" prefWidth="220" text="Customer" />
+                <TableColumn fx:id="colDate" prefWidth="160" style="-fx-alignment: CENTER;" text="Date" />
+                <TableColumn fx:id="colTotal" prefWidth="180" style="-fx-alignment: CENTER_RIGHT;" text="Total" />
+                <TableColumn fx:id="colPaymentType" prefWidth="160" style="-fx-alignment: CENTER;" text="Payment Type" />
+                <TableColumn fx:id="colAction" prefWidth="240" style="-fx-alignment: CENTER;" text="Action" />
+            </columns>
+            <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /></columnResizePolicy>
+        </TableView>
+
+        <HBox alignment="CENTER" spacing="40" />
+    </VBox>
+      <Button fx:id="btnEdit" layoutX="440.0" layoutY="793.0" onAction="#btnEditAction" style="-fx-background-color: #f8f9fa; -fx-font-size: 16px; -fx-font-weight: bold;                            -fx-padding: 14 50; -fx-background-radius: 15;" text=" Edit">
+          <graphic>
+         <ImageView fitHeight="26" fitWidth="26">
+            <image>
+               <Image url="@../img/images.png" />
+            </image>
+         </ImageView>
+      </graphic>
+      </Button>
+
+      <Button fx:id="btnDelete" layoutX="615.0" layoutY="793.0" style="-fx-background-color: #f8f9fa; -fx-text-fill: #dc3545; -fx-font-size: 16px; -fx-font-weight: bold;                            -fx-padding: 14 50; -fx-background-radius: 15;" text=" Delete">
+          <graphic>
+              <ImageView fitHeight="26" fitWidth="32.0" onDragDetected="#btnDeleteAction">
+                  <Image url="@../img/images%20(1).png" />
+              </ImageView>
+      </graphic>
+      </Button>
+
+     <!-- Monthly -->
+     <VBox alignment="CENTER_LEFT" layoutX="466.0" layoutY="161.0" prefHeight="210.0" spacing="12" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,10);                      -fx-padding: 30; -fx-pref-width: 300;">
+         <ImageView fitHeight="56.0" fitWidth="86.0">
+         <image>
+            <Image url="@../img/pngtree-dateline-or-reminder-icon-with-calendar-warning-sign-and-clock-vector-png-image_13721246.png" />
+         </image>
+      </ImageView>
+         <Label style="-fx-font-size: 17px; -fx-text-fill: #555;" text="Monthly Sales" />
+         <Label fx:id="txtMonthlySales" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #28a745;" text="1,800,000.00" />
+     </VBox>
+
+     <!-- Top Medicine -->
+     <VBox alignment="CENTER_LEFT" layoutX="787.0" layoutY="164.0" prefHeight="210.0" spacing="12" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,10);                      -fx-padding: 30; -fx-pref-width: 300;">
+         <ImageView fitHeight="65.0" fitWidth="79.0">
+         <image>
+            <Image url="@../img/pngtree-blue-pill-container-with-medical-symbol-and-various-capsules-png-image_15608229.png" />
+         </image>
+      </ImageView>
+         <Label style="-fx-font-size: 17px; -fx-text-fill: #555;" text="Top Selling Medicine" />
+         <Label fx:id="txtTopSellingMedicine" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="BISOVIC" />
+     </VBox>
+     <!-- Today -->
+     <VBox alignment="CENTER_LEFT" layoutX="143.0" layoutY="161.0" spacing="12" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,10);                      -fx-padding: 30; -fx-pref-width: 300;">
+         <ImageView fitHeight="62.0" fitWidth="88.0">
+         <image>
+            <Image url="@../img/total-sales.jpg" />
+         </image>
+      </ImageView>
+         <Label style="-fx-font-size: 17px; -fx-text-fill: #555;" text="Today's Total Sales" />
+         <Label fx:id="txtTotalTodaySales" style="-fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #28a745;" text="68,500.00" />
+     </VBox>
+   <HBox alignment="CENTER_LEFT" layoutX="-1.0" prefHeight="140.0" prefWidth="1233.0" spacing="20">
+      <padding>
+         <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
+      </padding>
+      <children>
+         <VBox alignment="CENTER_LEFT" spacing="5">
+            <children>
+               <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../img/Screenshot%202025-11-20%20at%202.10.32%E2%80%AFPM.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </VBox>
+         <Button onAction="#btnDashBoardAction" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Dashboard">
+            <font>
+               <Font name="System Italic" size="1.0" />
+            </font>
+         </Button>
+         <Button onAction="#btnMedicinesAction" prefHeight="43.0" prefWidth="154.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Medicines Sales" />
+         <Button onAction="#btnSuppliersAction" prefHeight="48.0" prefWidth="110.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Suppliers" />
+         <Button onAction="#btnSalesAction" prefHeight="43.0" prefWidth="87.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Sales" />
+         <Button onAction="#btnBillingAction" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Billing" />
+         <Label style="-fx-text-fill: #ff6b6b; -fx-font-size: 19px; -fx-font-weight: bold;" text="Hello, Thushara!" />
+         <Button onAction="#btnLogoutAction" prefHeight="43.0" prefWidth="98.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Log out" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../img/Screenshot%202025-11-20%20at%202.13.08%E2%80%AFPM.png" />
+            </image>
+            <rotationAxis>
+               <Point3D x="1.0" z="1.0" />
+            </rotationAxis>
+            <viewport>
+               <Rectangle2D />
+            </viewport>
+         </ImageView>
+      </children>
+   </HBox>
+
+</AnchorPane>
