@@ -77,7 +77,7 @@ public class DashBoardFormController {
     @FXML
     void btnSuppliersAction(ActionEvent event) {
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(""))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/suppliers.fxml"))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
