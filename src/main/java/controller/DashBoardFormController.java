@@ -59,7 +59,7 @@ public class DashBoardFormController {
     @FXML
     void btnMedicinesAction(ActionEvent event) {
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(""))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/medicines.fxml"))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

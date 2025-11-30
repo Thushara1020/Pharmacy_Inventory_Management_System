@@ -15,46 +15,7 @@
 <AnchorPane prefHeight="743.0" prefWidth="1230.0" style="-fx-background-color: #f8f9fc;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardFormController">
 
     <!-- Top Green Header -->
-    <VBox style="-fx-background-color: #28a745; -fx-background-radius: 0 0 25 25;" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-        <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="140.0" prefWidth="1299.0" spacing="20">
-                <padding>
-                    <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
-                </padding>
-      
-                <!-- Left Logo -->
-                <VBox alignment="CENTER_LEFT" spacing="5">
-                    <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../img/Screenshot%202025-11-20%20at%202.10.32%E2%80%AFPM.png" />
-                        </image>
-                    </ImageView>
-                </VBox>
-                 <Button onAction="#btnDashBoardAction" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Dashboard">
-               <font>
-                  <Font name="System Italic" size="1.0" />
-               </font>
-            </Button>
-            <Button onAction="#btnMedicinesAction" prefHeight="43.0" prefWidth="154.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Medicines Sales" />
-            <Button onAction="#btnSuppliersAction" prefHeight="48.0" prefWidth="110.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Suppliers" />
-            <Button onAction="#btnSalesAction" prefHeight="43.0" prefWidth="87.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Sales" />
-            <Button onAction="#btnBillingAction" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Billing" />
-                 <Label style="-fx-text-fill: #ff6b6b; -fx-font-size: 19px; -fx-font-weight: bold;" text="Hello, Thushara!" />
-            <Button onAction="#btnLogoutAction" prefHeight="43.0" prefWidth="98.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Log out" />
-                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../img/Screenshot%202025-11-20%20at%202.07.07%E2%80%AFPM.png" />
-                    </image>
-                    <rotationAxis>
-                        <Point3D x="1.0" z="1.0" />
-                    </rotationAxis>
-                    <viewport>
-                        <Rectangle2D />
-                    </viewport>
-                </ImageView>
-            </HBox>
-        </children>
-    </VBox>
+    <VBox style="-fx-background-color: #28a745; -fx-background-radius: 0 0 25 25;" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" />
 
           <!-- Dashboard Title -->
     <Label layoutX="23.0" layoutY="161.0" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Dashboard" />
@@ -102,5 +63,43 @@
          <Label fx:id="TotalSuppliers" style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="28" />
          <Label style="-fx-font-size: 17px; -fx-text-fill: #7f8c8d;" text="Total Suppliers" />
      </VBox>
+   <HBox alignment="CENTER_LEFT" layoutX="7.0" prefHeight="140.0" prefWidth="1233.0" spacing="20">
+      <padding>
+         <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
+      </padding>
+      <children>
+         <VBox alignment="CENTER_LEFT" spacing="5">
+            <children>
+               <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../img/Screenshot%202025-11-20%20at%202.10.32%E2%80%AFPM.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </VBox>
+         <Button onAction="#btnDashBoardAction" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Dashboard">
+            <font>
+               <Font name="System Italic" size="1.0" />
+            </font>
+         </Button>
+         <Button onAction="#btnMedicinesAction" prefHeight="43.0" prefWidth="154.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Medicines Sales" />
+         <Button onAction="#btnSuppliersAction" prefHeight="48.0" prefWidth="110.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Suppliers" />
+         <Button onAction="#btnSalesAction" prefHeight="43.0" prefWidth="87.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Sales" />
+         <Button onAction="#btnBillingAction" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Billing" />
+         <Label style="-fx-text-fill: #ff6b6b; -fx-font-size: 19px; -fx-font-weight: bold;" text="Hello, Thushara!" />
+         <Button onAction="#btnLogoutAction" prefHeight="43.0" prefWidth="98.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Log out" />
+         <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../img/Screenshot%202025-11-20%20at%207.29.10%E2%80%AFPM.png" />
+            </image>
+            <rotationAxis>
+               <Point3D x="1.0" z="1.0" />
+            </rotationAxis>
+            <viewport>
+               <Rectangle2D />
+            </viewport>
+         </ImageView>
+      </children>
+   </HBox>
 
 </AnchorPane>
