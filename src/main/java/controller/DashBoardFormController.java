@@ -28,7 +28,7 @@ public class DashBoardFormController {
     @FXML
     void btnBillingAction(ActionEvent event) {
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(""))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/billing.fxml"))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -61,7 +61,7 @@ public class DashBoardFormController {
     @FXML
     void btnSalesAction(ActionEvent event) {
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(""))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/sales.fxml"))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
