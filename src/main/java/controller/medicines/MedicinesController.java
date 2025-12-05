@@ -78,7 +78,7 @@ public class MedicinesController implements MedicinesService {
 
         try {
             Connection connection = DbConnection.getInstance().getConnection();
-            String SQL = "SELECT * FROM item";
+            String SQL = "SELECT * FROM medicines";
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             ResultSet resultSet = preparedStatement.executeQuery();
 

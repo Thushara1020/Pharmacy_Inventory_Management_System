@@ -19,4 +19,5 @@ public class medicinesDTO {
     private  int quantity;
 
     private int price;
+
 }
