@@ -1,101 +1,94 @@
 package controller.medicines;
 
 import db.DbConnection;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.dto.medicinesDTO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 
-public class MedicinesController implements MedicinesService {
+public abstract class MedicinesController implements MedicinesService {
 
     @Override
-    public void addMedicinesDeteils(int medicine_id, String name, String brand, int expiry_date, int quantity, int price){
+    public void addMedicinesDeteils(int medicine_id, String name, String brand, LocalDate expiry_date, int quantity, int price) {
+        String SQL = "INSERT INTO medicines (medicine_id, name, brand, expiry_date, quantity, price) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try {
-            Connection connection = DbConnection.getInstance().getConnection();
+        try (Connection conn = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = conn.prepareStatement(SQL)) {
 
-            String SQL = "INSERT INTO medicines VALUES(?, ?, ?, ?, ?, ?)";
+            pstm.setInt(1, medicine_id);
+            pstm.setString(2, name);
+            pstm.setString(3, brand);
+            pstm.setObject(4, expiry_date);   // LocalDate directly support karanwa MySQL DATE type ekata
+            pstm.setInt(5, quantity);
+            pstm.setInt(6, price);
 
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-            preparedStatement.setObject(1,medicine_id);
-            preparedStatement.setObject(2,name);
-            preparedStatement.setObject(3,brand);
-            preparedStatement.setObject(4,expiry_date);
-            preparedStatement.setObject(5,quantity);
-            preparedStatement.setObject(6,price);
-
-            preparedStatement.executeUpdate();
+            pstm.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error adding medicine: " + e.getMessage(), e);
         }
-
-
     }
+
     @Override
     public void deleteMedicinesDetails(String medicines_id) {
+        String SQL = "DELETE FROM medicines WHERE medicine_id = ?"; // WHERE clause eka illa!
 
-        try {
-            Connection connection = DbConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM medicines");
+        try (Connection conn = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = conn.prepareStatement(SQL)) {
 
-            preparedStatement.setObject(1,medicines_id);
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void updateMedicinesDetails(int medicine_id, String name, String brand, int expiry_date, int quantity, int price){
-
-        try {
-            Connection connection = DbConnection.getInstance().getConnection();
-
-            String SQL = "UPDATE medicines SET medicine_id = ?, name = ?, brand = ?, expiry_date = ?, quantity = ?, price = ?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-            preparedStatement.setObject(1,medicine_id);
-            preparedStatement.setObject(2,name);
-            preparedStatement.setObject(3,brand);
-            preparedStatement.setObject(4,expiry_date);
-            preparedStatement.setObject(5,quantity);
-            preparedStatement.setObject(6,price);
-
-            preparedStatement.executeUpdate();
+            pstm.setString(1, medicines_id);
+            pstm.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error deleting medicine: " + e.getMessage(), e);
         }
     }
+
+    public void updateMedicinesDetails(int medicine_id, String name, String brand, LocalDate expiry_date, int quantity, int price) {
+        String SQL = "UPDATE medicines SET name = ?, brand = ?, expiry_date = ?, quantity = ?, price = ? WHERE medicine_id = ?";
+
+        try (Connection conn = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = conn.prepareStatement(SQL)) {
+
+            pstm.setString(1, name);
+            pstm.setString(2, brand);
+            pstm.setObject(3, expiry_date);
+            pstm.setInt(4, quantity);
+            pstm.setInt(5, price);
+            pstm.setInt(6, medicine_id);
+
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating medicine: " + e.getMessage(), e);
+        }
+    }
+
     @Override
     public ObservableList<medicinesDTO> getAllItemDetails() {
-        ObservableList<medicinesDTO> itemDetails = javafx.collections.FXCollections.observableArrayList();
+        ObservableList<medicinesDTO> list = FXCollections.observableArrayList();
+        String SQL = "SELECT * FROM medicines";
 
-        try {
-            Connection connection = DbConnection.getInstance().getConnection();
-            String SQL = "SELECT * FROM medicines";
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            ResultSet resultSet = preparedStatement.executeQuery();
+        try (Connection conn = DbConnection.getInstance().getConnection();
+             PreparedStatement pstm = conn.prepareStatement(SQL);
+             ResultSet rs = pstm.executeQuery()) {
 
-            while (resultSet.next()){
-                itemDetails.add(new medicinesDTO(
-                        resultSet.getInt("medicine_id"),
-                        resultSet.getString("name"),
-                        resultSet.getString("brand"),
-                        resultSet.getInt("expiry_date"),
-                        resultSet.getInt("quantity"),
-                        resultSet.getInt("price")
-                ));
+            while (rs.next()) {
+                medicinesDTO dto = new medicinesDTO(
+                        rs.getInt("medicine_id"),
+                        rs.getString("name"),
+                        rs.getString("brand"),
+                        rs.getObject("expiry_date", LocalDate.class),
+                        rs.getInt("quantity"),
+                        rs.getInt("price")
+                );
+                list.add(dto);
             }
-
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error loading medicines: " + e.getMessage(), e);
         }
-        return itemDetails;
+        return list;
     }
 }

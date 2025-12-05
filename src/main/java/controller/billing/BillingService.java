@@ -1,5 +1,5 @@
 package controller.billing;
 
-public interface BillingService
-{
+public interface BillingService{
+
 }
