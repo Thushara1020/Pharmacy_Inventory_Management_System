@@ -40,7 +40,7 @@ public class LoginFormController {
         String email = txtEmail.getText();
         String password = txtPassword.getText();
 
-        if (email.equals("thushara@gmail.com") && password.equals("1234")) {
+        if (email.equals("Admin") && password.equals("1234")) {
             // Proceed to dashboard
             try {
             Stage stage = (Stage)((javafx.scene.Node) event.getSource()).getScene().getWindow();
