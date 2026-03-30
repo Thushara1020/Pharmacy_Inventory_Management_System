@@ -3,14 +3,23 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class LoginFormController {
-    Stage stage = new Stage();
+    private static final String ADMIN_EMAIL = "Admin";
+    private static final String ADMIN_PASSWORD = "1234";
 
     @FXML
     private Button btnLogin;
@@ -32,33 +41,58 @@ public class LoginFormController {
 
     @FXML
     void btnForgotpasswordActiton(ActionEvent event) {
-
+        showInfo("Forgot Password", "Password recovery is not implemented yet.");
     }
 
     @FXML
     void btnLoginAction(ActionEvent event) {
-        String email = txtEmail.getText();
-        String password = txtPassword.getText();
+        String email = txtEmail.getText() == null ? "" : txtEmail.getText().trim();
+        String password = txtPassword.getText() == null ? "" : txtPassword.getText();
 
-        if (email.equals("Admin") && password.equals("1234")) {
-            // Proceed to dashboard
-            try {
-            Stage stage = (Stage)((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard.fxml")));
-            stage.setScene(scene);
-            stage.centerOnScreen();
-            } catch (IOException e) {
-                e.printStackTrace();
-                showError("Error loading dashboard.fxml");
-            }
+        if (email.isEmpty() || password.isEmpty()) {
+            showError("Please enter both email and password.");
+            return;
+        }
+
+        if (isValidCredentials(email, password)) {
+            loadDashboard(event);
             txtEmail.clear();
             txtPassword.clear();
         } else {
-            showError("Invalid Email or Password");
-            txtEmail.clear();
+            showError("Invalid email or password.");
             txtPassword.clear();
         }
+    }
 
+    @FXML
+    void btnSingUpAction(ActionEvent event) {
+        showInfo("Sign Up", "Sign up is not implemented yet.");
+    }
+
+    @FXML
+    void btnGuestLoginAction(ActionEvent event) {
+        loadDashboard(event);
+    }
+
+    private boolean isValidCredentials(String email, String password) {
+        return ADMIN_EMAIL.equals(email) && ADMIN_PASSWORD.equals(password);
+    }
+
+    private void loadDashboard(ActionEvent event) {
+        URL resource = getClass().getResource("/view/dashboard.fxml");
+        if (resource == null) {
+            showError("Dashboard view was not found.");
+            return;
+        }
+
+        try {
+            Parent root = FXMLLoader.load(resource);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            showError("Error loading dashboard.");
+        }
     }
 
     private void showError(String message) {
@@ -69,19 +103,11 @@ public class LoginFormController {
         alert.showAndWait();
     }
 
-    @FXML
-    void btnSingUpAction(ActionEvent event) {
-
+    private void showInfo(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
-    @FXML
-    void btnGuestLoginAction(ActionEvent event) {
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"))));
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
 }
