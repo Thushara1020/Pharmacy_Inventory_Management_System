@@ -39,6 +39,7 @@ public class LoginFormController {
     @FXML
     private PasswordField txtPassword;
 
+
     @FXML
     void btnForgotpasswordActiton(ActionEvent event) {
         showInfo("Forgot Password", "Password recovery is not implemented yet.");
