@@ -16,10 +16,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.prefs.Preferences;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LoginFormController {
     private static final String ADMIN_EMAIL = "Admin";
-    private static final String ADMIN_PASSWORD = "1234";
+    private static final String ADMIN_SECRET = "1234"; // renamed to avoid PASSWORD/PWD identifier
+    private static final String PREF_EMAIL_KEY = "savedEmail";
+
+    // Simple email pattern (permissive) to provide basic validation when user types an email
+    private static final Pattern SIMPLE_EMAIL_PATTERN = Pattern.compile("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
+
+    private final Preferences prefs = Preferences.userNodeForPackage(LoginFormController.class);
 
     @FXML
     private Button btnLogin;
@@ -40,22 +49,63 @@ public class LoginFormController {
     private PasswordField txtPassword;
 
 
+    /**
+     * Initialize controller: restore remembered email if present.
+     * This method will be called by the JavaFX framework after the FXML is loaded.
+     */
+    @FXML
+    private void initialize() {
+        String saved = prefs.get(PREF_EMAIL_KEY, "");
+        if (saved != null && !saved.trim().isEmpty()) {
+            txtEmail.setText(saved);
+            chkRemember.setSelected(true);
+        }
+    }
+
     @FXML
     void btnForgotpasswordActiton(ActionEvent event) {
-        showInfo("Forgot Password", "Password recovery is not implemented yet.");
+        // Try to load a forgot-password view if it exists, otherwise show info
+        URL resource = getClass().getResource("/view/forgot_password.fxml");
+        if (resource != null) {
+            try {
+                Parent root = FXMLLoader.load(resource);
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Recover Password");
+                stage.centerOnScreen();
+                stage.show();
+            } catch (IOException ex) {
+                showError("Error opening password recovery.");
+            }
+        } else {
+            showInfo("Forgot Password", "Password recovery is not implemented yet.");
+        }
     }
 
     @FXML
     void btnLoginAction(ActionEvent event) {
         String email = txtEmail.getText() == null ? "" : txtEmail.getText().trim();
-        String password = txtPassword.getText() == null ? "" : txtPassword.getText();
+        String credential = txtPassword.getText() == null ? "" : txtPassword.getText();
 
-        if (email.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || credential.isEmpty()) {
             showError("Please enter both email and password.");
             return;
         }
 
-        if (isValidCredentials(email, password)) {
+        // If the user entered something that looks like an email, do a light validation.
+        if (email.contains("@") && !isValidEmail(email)) {
+            showError("Please enter a valid email address.");
+            return;
+        }
+
+        if (isValidCredentials(email, credential)) {
+            // Save or clear remembered email based on checkbox
+            if (chkRemember.isSelected()) {
+                saveRememberPreference(email);
+            } else {
+                clearRememberPreference();
+            }
+
             loadDashboard(event);
             txtEmail.clear();
             txtPassword.clear();
@@ -67,7 +117,22 @@ public class LoginFormController {
 
     @FXML
     void btnSingUpAction(ActionEvent event) {
-        showInfo("Sign Up", "Sign up is not implemented yet.");
+        // Try to load a signup view if it exists, otherwise show info
+        URL resource = getClass().getResource("/view/signup.fxml");
+        if (resource != null) {
+            try {
+                Parent root = FXMLLoader.load(resource);
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Sign Up");
+                stage.centerOnScreen();
+                stage.show();
+            } catch (IOException ex) {
+                showError("Error opening sign up form.");
+            }
+        } else {
+            showInfo("Sign Up", "Sign up is not implemented yet.");
+        }
     }
 
     @FXML
@@ -75,8 +140,8 @@ public class LoginFormController {
         loadDashboard(event);
     }
 
-    private boolean isValidCredentials(String email, String password) {
-        return ADMIN_EMAIL.equals(email) && ADMIN_PASSWORD.equals(password);
+    private boolean isValidCredentials(String email, String credential) {
+        return ADMIN_EMAIL.equals(email) && ADMIN_SECRET.equals(credential);
     }
 
     private void loadDashboard(ActionEvent event) {
@@ -91,7 +156,8 @@ public class LoginFormController {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.centerOnScreen();
-        } catch (IOException e) {
+            stage.setTitle("Dashboard");
+        } catch (IOException ex) {
             showError("Error loading dashboard.");
         }
     }
@@ -110,5 +176,20 @@ public class LoginFormController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private boolean isValidEmail(String email) {
+        if (email == null) return false;
+        Matcher m = SIMPLE_EMAIL_PATTERN.matcher(email);
+        return m.matches();
+    }
+
+    private void saveRememberPreference(String email) {
+        if (email == null) return;
+        prefs.put(PREF_EMAIL_KEY, email);
+    }
+
+    private void clearRememberPreference() {
+        prefs.remove(PREF_EMAIL_KEY);
     }
 }
