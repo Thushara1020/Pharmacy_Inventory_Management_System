@@ -37,6 +37,9 @@ public class LoginFormController {
     private Button btnLogin;
 
     @FXML
+    private Button btnLogin1;
+
+    @FXML
     private Hyperlink btnforgot;
 
     @FXML
