@@ -20,7 +20,7 @@
             <!-- Logo -->
             <ImageView fitHeight="146.0" fitWidth="152.0">
                 <image>
-                    <Image url="@../img/Screenshot%202025-11-20%20at%202.10.32%E2%80%AFPM.png" />
+                    <Image url="@../img/images.png" />
                 </image>
             </ImageView>
 
