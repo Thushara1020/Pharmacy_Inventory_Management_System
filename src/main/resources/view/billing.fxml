@@ -40,7 +40,7 @@
             </HBox>
 
             <!-- Cart Table -->
-            <TableView fx:id="BillingTable" prefHeight="220" prefWidth="1080">
+            <TableView fx:id="billingTable" prefHeight="220" prefWidth="1080">
                 <columns>
                     <TableColumn fx:id="colItem" prefWidth="400" text="Item" />
                     <TableColumn fx:id="colQty" prefWidth="150" style="-fx-alignment: CENTER;" text="Qty" />
@@ -92,7 +92,7 @@
             <children>
                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@../img/Screenshot%202025-11-20%20at%202.10.32%E2%80%AFPM.png" />
+                     <Image url="@../img/images.png" />
                   </image>
                </ImageView>
             </children>
@@ -110,7 +110,7 @@
          <Button onAction="#btnLogoutAction" prefHeight="43.0" prefWidth="98.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Log out" />
          <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../img/Screenshot%202025-11-20%20at%202.13.08%E2%80%AFPM.png" />
+               <Image url="@../img/Screenshot 2025-11-20 at 2.13.08 PM.png" />
             </image>
             <rotationAxis>
                <Point3D x="1.0" z="1.0" />
