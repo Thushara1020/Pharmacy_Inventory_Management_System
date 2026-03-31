@@ -26,7 +26,7 @@
             <Image url="@../img/12692350.png" />
          </image>
          </ImageView>
-         <Label fx:id="TotalSales" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Rs.52,000.00" />
+         <Label fx:id="totalSales" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Rs.52,000.00" />
          <Label style="-fx-font-size: 17px; -fx-text-fill: #7f8c8d;" text="Total Sales (Today)" />
      </VBox>
 
@@ -37,7 +37,7 @@
             <Image url="@../img/10755029.png" />
          </image>
          </ImageView>
-         <Label fx:id="ExpiringMedicines" style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="9" />
+         <Label fx:id="expiringMedicines" style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="9" />
          <Label style="-fx-font-size: 17px; -fx-text-fill: #7f8c8d;" text="Expiring Soon" />
      </VBox>
 
@@ -48,7 +48,7 @@
             <Image url="@../img/5523306.png" />
          </image>
          </ImageView>
-         <Label fx:id="TotalMedicines" style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="220" VBox.vgrow="ALWAYS" />
+         <Label fx:id="totalMedicines" style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="220" VBox.vgrow="ALWAYS" />
          <Label style="-fx-font-size: 17px; -fx-text-fill: #7f8c8d;" text="Total Medicines" />
      </VBox>
 
@@ -59,7 +59,7 @@
             <Image url="@../img/4866608.png" />
          </image>
          </ImageView>
-         <Label fx:id="TotalSuppliers" style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="28" />
+         <Label fx:id="totalSuppliers" style="-fx-font-size: 42px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="28" />
          <Label style="-fx-font-size: 17px; -fx-text-fill: #7f8c8d;" text="Total Suppliers" />
      </VBox>
    <HBox alignment="CENTER_LEFT" layoutX="7.0" prefHeight="140.0" prefWidth="1006.0" spacing="20">
@@ -71,7 +71,7 @@
             <children>
                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@../img/Screenshot%202025-11-20%20at%202.10.32%E2%80%AFPM.png" />
+                     <Image url="@../img/images.png" />
                   </image>
                </ImageView>
             </children>
@@ -84,7 +84,7 @@
          <Button onAction="#btnLogoutAction" prefHeight="43.0" prefWidth="98.0" style="-fx-background-color: #dc3545; -fx-text-fill: white;                            -fx-font-weight: bold; -fx-background-radius: 30; -fx-padding: 12 25 12 25; -fx-font-size: 15px;" text="Log out" />
          <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../img/Screenshot%202025-11-20%20at%207.29.10%E2%80%AFPM.png" />
+               <Image url="@../img/Screenshot 2025-11-20 at 7.29.10 PM.png" />
             </image>
             <rotationAxis>
                <Point3D x="1.0" z="1.0" />
