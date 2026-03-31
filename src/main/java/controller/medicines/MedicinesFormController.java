@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -13,7 +14,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MedicinesFormController {
-    Stage stage = new Stage();
+    private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(MedicinesFormController.class.getName());
+    private static final String RESOURCE_NOT_FOUND = "Resource not found";
 
     @FXML
     private Button btnAdd;
@@ -75,10 +77,16 @@ public class MedicinesFormController {
 
     @FXML
     void btnBillingAction(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        java.net.URL resource = getClass().getResource("/view/billing.fxml");
+        if (resource == null) {
+            showLoadError("billing.fxml", new IOException(RESOURCE_NOT_FOUND));
+            return;
+        }
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/billing.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(resource)));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            showLoadError("billing.fxml", e);
         }
         stage.setTitle("Billing Form");
         stage.show();
@@ -87,10 +95,16 @@ public class MedicinesFormController {
 
     @FXML
     void btnDashBoardAction(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        java.net.URL resource = getClass().getResource("/view/dashboard.fxml");
+        if (resource == null) {
+            showLoadError("dashboard.fxml", new IOException(RESOURCE_NOT_FOUND));
+            return;
+        }
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(resource)));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            showLoadError("dashboard.fxml", e);
         }
         stage.setTitle("Dashboard Form");
         stage.show();
@@ -105,10 +119,16 @@ public class MedicinesFormController {
 
     @FXML
     void btnLogoutAction(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        java.net.URL resource = getClass().getResource("/view/login.fxml");
+        if (resource == null) {
+            showLoadError("login.fxml", new IOException(RESOURCE_NOT_FOUND));
+            return;
+        }
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/login.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(resource)));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            showLoadError("login.fxml", e);
         }
         stage.setTitle("Login Form");
         stage.show();
@@ -117,10 +137,16 @@ public class MedicinesFormController {
 
     @FXML
     void btnSalesAction(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        java.net.URL resource = getClass().getResource("/view/sales.fxml");
+        if (resource == null) {
+            showLoadError("sales.fxml", new IOException(RESOURCE_NOT_FOUND));
+            return;
+        }
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/sales.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(resource)));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            showLoadError("sales.fxml", e);
         }
         stage.setTitle("Sales Form");
         stage.show();
@@ -129,14 +155,29 @@ public class MedicinesFormController {
 
     @FXML
     void btnSuppliersAction(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        java.net.URL resource = getClass().getResource("/view/suppliers.fxml");
+        if (resource == null) {
+            showLoadError("suppliers.fxml", new IOException(RESOURCE_NOT_FOUND));
+            return;
+        }
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/suppliers.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(resource)));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            showLoadError("suppliers.fxml", e);
         }
         stage.setTitle("Suppliers Form");
         stage.show();
 
+    }
+
+    private void showLoadError(String fxml, Exception e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("View Load Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Failed to load view: " + fxml + "\n" + e.getMessage());
+        alert.showAndWait();
+        LOGGER.log(java.util.logging.Level.SEVERE, "Failed to load view: " + fxml, e);
     }
 
 }
