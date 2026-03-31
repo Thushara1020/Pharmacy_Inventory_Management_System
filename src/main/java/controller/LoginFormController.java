@@ -19,8 +19,11 @@ import java.net.URL;
 import java.util.prefs.Preferences;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginFormController {
+    private static final Logger LOGGER = Logger.getLogger(LoginFormController.class.getName());
     private static final String ADMIN_EMAIL = "Admin";
     private static final String ADMIN_SECRET = "1234"; // renamed to avoid PASSWORD/PWD identifier
     private static final String PREF_EMAIL_KEY = "savedEmail";
@@ -49,10 +52,6 @@ public class LoginFormController {
     private PasswordField txtPassword;
 
 
-    /**
-     * Initialize controller: restore remembered email if present.
-     * This method will be called by the JavaFX framework after the FXML is loaded.
-     */
     @FXML
     private void initialize() {
         String saved = prefs.get(PREF_EMAIL_KEY, "");
@@ -69,12 +68,12 @@ public class LoginFormController {
         if (resource != null) {
             try {
                 Parent root = FXMLLoader.load(resource);
-                Stage stage = new Stage();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(root));
-                stage.setTitle("Recover Password");
                 stage.centerOnScreen();
-                stage.show();
+                stage.setTitle("Recover Password");
             } catch (IOException ex) {
+                LOGGER.log(Level.SEVERE, "Failed to open forgot password view", ex);
                 showError("Error opening password recovery.");
             }
         } else {
@@ -122,12 +121,12 @@ public class LoginFormController {
         if (resource != null) {
             try {
                 Parent root = FXMLLoader.load(resource);
-                Stage stage = new Stage();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(root));
-                stage.setTitle("Sign Up");
                 stage.centerOnScreen();
-                stage.show();
+                stage.setTitle("Sign Up");
             } catch (IOException ex) {
+                LOGGER.log(Level.SEVERE, "Failed to open sign up view", ex);
                 showError("Error opening sign up form.");
             }
         } else {
@@ -158,6 +157,7 @@ public class LoginFormController {
             stage.centerOnScreen();
             stage.setTitle("Dashboard");
         } catch (IOException ex) {
+            LOGGER.log(Level.SEVERE, "Failed to load dashboard view", ex);
             showError("Error loading dashboard.");
         }
     }
